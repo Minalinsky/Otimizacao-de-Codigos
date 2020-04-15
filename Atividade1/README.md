@@ -1,5 +1,6 @@
 **Nome: Alyson Maeus Maruyama Nascimento - 8532269**
 
+> O Enunciado dessa atividade pode ser encontrada no arquivo `Atividade1.pdf` neste repositório
 # Arquivos
 - `main.c`: corresponde ao código que será tomado como base para o uso de técnicas de compiler design e as comparações das métricas
 - `interchange.c`: implementação do arquivo `main.c` com a técnica de *Loop Interchanging*
