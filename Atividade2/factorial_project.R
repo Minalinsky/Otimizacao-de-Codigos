@@ -14,7 +14,7 @@ plan.person = FrF2(nruns = 4,
 
 summary(plan.person)
 
-# Valores de cada variável de resposta em cada  (RETIRE OS COMENTARIOS DEPENDENDO DE QUAL VARIAVEL QUISER VISUALIZAR):
+# Valores de cada variável de resposta em cada experimento da Atividade 1 (RETIRE OS COMENTARIOS DEPENDENDO DE QUAL VARIAVEL QUISER VISUALIZAR):
 
 ##  `L1-dcache loads`
 resultados = c(13151275, 13207135, 1322562515, 132053624)
@@ -62,3 +62,4 @@ InfluenciaAB = plan.anova$"Mean Sq"[3] / SST
 cat("\n\nInfluencia devido ao fator Tecnica:", InfluenciaA)
 cat("\nInfluencia devido ao fator Matriz:", InfluenciaB)
 cat("\nInfluencia devido a interacaoo dos fatores:", InfluenciaAB)
+cat("\n\n")
