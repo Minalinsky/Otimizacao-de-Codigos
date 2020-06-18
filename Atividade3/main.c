@@ -85,11 +85,45 @@ void heapSort(int* array) {
   }
 }
 
+void quicksort(int* array, int low, int high) {
+  int pivot, i, j, aux;
+  if (low < high) {
+    pivot = low;
+    i = low;
+    j = high;
+    while (i < j) {
+      // increment i until you get a number greater than the pivot element
+      while (array[i] <= array[pivot] && i <= high) i++;
+
+      // decrement j till you get a number less than the pivot element
+      while (array[j] > array[pivot] && j >= low)
+        j--;
+      // if i < j swap the elements
+      if (i < j) {
+        aux = array[i];
+        array[i] = array[j];
+        array[j] = aux;
+      }
+    }
+
+    // when i >= j, it means the j-th position is the correct position of the pivot element, hence swap the pivot element with the
+    // element in the j-th position
+    aux = array[j];
+    array[j] = array[pivot];
+    array[pivot] = aux;
+
+    // Repeat quicksort for the two sub-arrays, one to the left of j and one to the right of j
+    quicksort(array, low, j - 1);
+    quicksort(array, j + 1, high);
+  }
+}
+
 int main () {
   int* arr = generateArray();
   printArray(arr);
 
-  heapSort(arr);
+  // heapSort(arr);
+  quicksort(arr, 0, size - 1);
   printArray(arr);
   
 }
