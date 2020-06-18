@@ -5,7 +5,7 @@
 // Array Length
 #define size 20
 
-int bubbleSort(int *array, ) {
+int bubbleSort(int *array) {
 	int aux;
 
 	for (int i = size - 2; i >= 0; i--) {
@@ -36,7 +36,7 @@ void printArray (int* array) {
 }
 
 int main () {
-  int* arr = generateArray(size);
-  printArray(arr, size);
+  int* arr = generateArray();
+  printArray(arr);
   
 }
