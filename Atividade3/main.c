@@ -21,6 +21,7 @@ void printArray (int* array) {
 }
 
 int bubbleSort(int *array) {
+  printf("~ BubbleSort ~ \n");
 	int aux;
 
 	for (int i = size - 2; i >= 0; i--) {
@@ -36,7 +37,8 @@ int bubbleSort(int *array) {
 	return 1;
 }
 
-void selectionSort(int* array) { 
+void selectionSort(int* array) {
+  printf("~ SelectionSort ~ \n");
   int min, aux;
   for (int i = 0; i < (size - 1); i++) {
      min = i;
@@ -52,11 +54,42 @@ void selectionSort(int* array) {
   }
 }
 
+void heapSort(int* array) {
+  printf("~ HeapSort ~ \n");
+  int n = size;
+  int i = n / 2, parent, child, t;
+  while(1) {
+    if (i > 0) {
+        i--;
+        t = array[i];
+    } else {
+        n--;
+        if (n <= 0) return;
+        t = array[n];
+        array[n] = array[0];
+    }
+    parent = i;
+    child = i * 2 + 1;
+    while (child < n) {
+        if ((child + 1 < n)  &&  (array[child + 1] > array[child]))
+            child++;
+        if (array[child] > t) {
+            array[parent] = array[child];
+            parent = child;
+            child = parent * 2 + 1;
+        } else {
+            break;
+        }
+    }
+    array[parent] = t;
+  }
+}
+
 int main () {
   int* arr = generateArray();
   printArray(arr);
 
-  selection_sort(arr);
+  heapSort(arr);
   printArray(arr);
   
 }
