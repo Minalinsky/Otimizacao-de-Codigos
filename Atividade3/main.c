@@ -33,10 +33,14 @@ int* generateArray() {
 void printArray (int* array) {
   for(int i = 0; i < size; i++)
     printf("%d ", array[i]);
+  printf("\n\n");
 }
 
 int main () {
   int* arr = generateArray();
+  printArray(arr);
+
+  bubbleSort(arr);
   printArray(arr);
   
 }
