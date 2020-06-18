@@ -5,6 +5,21 @@
 // Array Length
 #define size 20
 
+int* generateArray() {
+  srand(time(NULL));
+  static int array[20];
+  for (int i = 0; i < size; i++)
+    array[i] = rand() % 100 ;
+
+  return array;
+}
+
+void printArray (int* array) {
+  for(int i = 0; i < size; i++)
+    printf("%d ", array[i]);
+  printf("\n\n");
+}
+
 int bubbleSort(int *array) {
 	int aux;
 
@@ -21,26 +36,27 @@ int bubbleSort(int *array) {
 	return 1;
 }
 
-int* generateArray() {
-  srand(time(NULL));
-  static int array[20];
-  for (int i = 0; i < size; i++)
-    array[i] = rand() % 100 ;
-
-  return array;
-}
-
-void printArray (int* array) {
-  for(int i = 0; i < size; i++)
-    printf("%d ", array[i]);
-  printf("\n\n");
+void selectionSort(int* array) { 
+  int min, aux;
+  for (int i = 0; i < (size - 1); i++) {
+     min = i;
+     for (int j = (i + 1); j < size; j++) {
+       if(array[j] < array[min]) 
+         min = j;
+     }
+     if (array[i] != array[min]) {
+       aux = array[i];
+       array[i] = array[min];
+       array[min] = aux;
+     }
+  }
 }
 
 int main () {
   int* arr = generateArray();
   printArray(arr);
 
-  bubbleSort(arr);
+  selection_sort(arr);
   printArray(arr);
   
 }
