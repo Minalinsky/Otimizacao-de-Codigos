@@ -3,7 +3,7 @@
 #include <time.h>
 
 // Array Length
-static int size = 1000000;
+static int size = 60000;
 /* Code to remove data from the processor caches. */ 
 #define KB (1024)
 #define MB (1024 * KB)
