@@ -29,8 +29,6 @@ int* copyArray(int* a) {
 
 int* generateArray() {
   srand(time(NULL));
-  printf("generateArray");
-
   int* array = (int*) malloc(size * sizeof(int));
   for (int i = 0; i < size; i++)
     array[i] = rand() % 100 ;
@@ -144,7 +142,6 @@ void quicksort(int* array, int low, int high) {
 
 int main () {
   // Generating original array
-  printf("123323223");
   int* original = generateArray();
   // Copying it to provide to each sorting function
   int* bubble = copyArray(original);
@@ -154,16 +151,16 @@ int main () {
 
   // Function calls
   bubbleSort(bubble);
-  // clean_cache();
+  clean_cache();
 
   selectionSort(selection);
-  // clean_cache();
+  clean_cache();
   
   heapSort(heap);
-  // clean_cache();
+  clean_cache();
   
   printf("~ QuickSort ~ \n");
   quicksort(quick, 0, size - 1);
-  // clean_cache();
+  clean_cache();
   // printArray(original);
 }
