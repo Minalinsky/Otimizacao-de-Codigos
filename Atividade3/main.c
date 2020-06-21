@@ -5,6 +5,16 @@
 // Array Length
 #define size 20
 
+// *a is the original array
+// *b is the resulting array
+int* copyArray(int* a) {
+  int* b = (int*) malloc(size * sizeof(int));
+  for (int i = 0; i < size; i ++)
+    *(b + i) = *(a + i);
+
+  return b;
+}
+
 int* generateArray() {
   srand(time(NULL));
   static int array[20];
@@ -119,11 +129,15 @@ void quicksort(int* array, int low, int high) {
 }
 
 int main () {
+  // Generating original array
   int* arr = generateArray();
-  printArray(arr);
+  // Copying it to provide to each sorting function
+  int* bubble = copyArray(arr);
+  int* selection = copyArray(arr);
+  int* heap = copyArray(arr);
+  int* quick = copyArray(arr);
 
   // heapSort(arr);
   quicksort(arr, 0, size - 1);
   printArray(arr);
-  
 }
