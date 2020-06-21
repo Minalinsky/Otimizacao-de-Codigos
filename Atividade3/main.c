@@ -19,7 +19,6 @@ void clean_cache() {
 // *a is the original array
 // *b is the resulting array
 int* copyArray(int* a) {
-  printf("copyArray");
   int* b = (int*) malloc(size * sizeof(int));
   for (int i = 0; i < size; i++)
     b[i] = a[i];
