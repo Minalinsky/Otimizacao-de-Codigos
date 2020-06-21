@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<time.h>
+#include <time.h>
 
 // Array Length
-#define size 20
+static int size = 1000000;
 /* Code to remove data from the processor caches. */ 
 #define KB (1024)
 #define MB (1024 * KB)
@@ -19,16 +19,19 @@ void clean_cache() {
 // *a is the original array
 // *b is the resulting array
 int* copyArray(int* a) {
+  printf("copyArray");
   int* b = (int*) malloc(size * sizeof(int));
-  for (int i = 0; i < size; i ++)
-    *(b + i) = *(a + i);
+  for (int i = 0; i < size; i++)
+    b[i] = a[i];
 
   return b;
 }
 
 int* generateArray() {
   srand(time(NULL));
-  static int array[20];
+  printf("generateArray");
+
+  int* array = (int*) malloc(size * sizeof(int));
   for (int i = 0; i < size; i++)
     array[i] = rand() % 100 ;
 
@@ -141,6 +144,7 @@ void quicksort(int* array, int low, int high) {
 
 int main () {
   // Generating original array
+  printf("123323223");
   int* original = generateArray();
   // Copying it to provide to each sorting function
   int* bubble = copyArray(original);
@@ -150,16 +154,16 @@ int main () {
 
   // Function calls
   bubbleSort(bubble);
-  clean_cache();
+  // clean_cache();
 
   selectionSort(selection);
-  clean_cache();
+  // clean_cache();
   
   heapSort(heap);
-  clean_cache();
+  // clean_cache();
   
   printf("~ QuickSort ~ \n");
   quicksort(quick, 0, size - 1);
-  clean_cache();
-  printArray(original);
+  // clean_cache();
+  // printArray(original);
 }
