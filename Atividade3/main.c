@@ -141,14 +141,25 @@ void quicksort(int* array, int low, int high) {
 
 int main () {
   // Generating original array
-  int* arr = generateArray();
+  int* original = generateArray();
   // Copying it to provide to each sorting function
-  int* bubble = copyArray(arr);
-  int* selection = copyArray(arr);
-  int* heap = copyArray(arr);
-  int* quick = copyArray(arr);
+  int* bubble = copyArray(original);
+  int* selection = copyArray(original);
+  int* heap = copyArray(original);
+  int* quick = copyArray(original);
 
-  // heapSort(arr);
-  quicksort(arr, 0, size - 1);
-  printArray(arr);
+  // Function calls
+  bubbleSort(bubble);
+  clean_cache();
+
+  selectionSort(selection);
+  clean_cache();
+  
+  heapSort(heap);
+  clean_cache();
+  
+  printf("~ QuickSort ~ \n");
+  quicksort(quick, 0, size - 1);
+  clean_cache();
+  printArray(original);
 }
