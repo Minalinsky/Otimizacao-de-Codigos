@@ -8,19 +8,21 @@
 mkdir results/
 # No optimization
 gcc -march=core2 fasta.gcc-2.c -o fasta.gcc-2.exe
-sudo perf stat ./fasta.gcc-2.exe 5000000 > ./results/no_opt.txt
+sudo perf stat -o ./results/no_opt.txt ./fasta.gcc-2.exe 5000000 > temp # temp is used to store program output so we dont need to wait for the prints in terminal to finish
 
 # O1 optimization
 gcc -O1 -march=core2 fasta.gcc-2.c -o fasta.gcc-2.exe
-sudo perf stat ./fasta.gcc-2.exe 5000000 > ./results/O1_perf.txt
+sudo perf stat -o ./results/O1_perf.txt ./fasta.gcc-2.exe 5000000 > temp
 
 # O2 optimization
 gcc -O2 -march=core2 fasta.gcc-2.c -o fasta.gcc-2.exe
-sudo perf stat ./fasta.gcc-2.exe 5000000 > ./results/O2_perf.txt
+sudo perf stat -o ./results/O2_perf.txt ./fasta.gcc-2.exe 5000000 > temp
 
 # O3 optimization
 gcc -O3 -march=core2 fasta.gcc-2.c -o fasta.gcc-2.exe
-sudo perf stat ./fasta.gcc-2.exe 5000000 > ./results/O3_perf.txt
+sudo perf stat -o ./results/O3_perf.txt ./fasta.gcc-2.exe 5000000 > temp
+
+rm temp
 
 
 # Now compiling with the flags that appear more than +80% for the `fasta` program in 
