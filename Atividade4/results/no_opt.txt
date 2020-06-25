@@ -1,18 +1,18 @@
-# started on Thu Jun 25 19:32:09 2020
+# started on Thu Jun 25 19:35:27 2020
 
 
- Performance counter stats for './fasta.gcc-2.exe 5000000':
+ Performance counter stats for './fasta.gcc-2.exe 9000000':
 
-       1351,364591      task-clock (msec)         #    1,000 CPUs utilized          
-                 3      context-switches          #    0,002 K/sec                  
-                 1      cpu-migrations            #    0,001 K/sec                  
-               127      page-faults               #    0,094 K/sec                  
-     4.717.634.784      cycles                    #    3,491 GHz                    
-     1.754.174.713      stalled-cycles-frontend   #   37,18% frontend cycles idle   
-     4.998.629.103      instructions              #    1,06  insn per cycle         
-                                                  #    0,35  stalled cycles per insn
-       868.619.577      branches                  #  642,772 M/sec                  
-        42.160.600      branch-misses             #    4,85% of all branches        
+       2369,112245      task-clock (msec)         #    1,000 CPUs utilized          
+                 3      context-switches          #    0,001 K/sec                  
+                 0      cpu-migrations            #    0,000 K/sec                  
+               129      page-faults               #    0,054 K/sec                  
+     8.233.849.263      cycles                    #    3,475 GHz                    
+     2.819.794.727      stalled-cycles-frontend   #   34,25% frontend cycles idle   
+     8.998.263.473      instructions              #    1,09  insn per cycle         
+                                                  #    0,31  stalled cycles per insn
+     1.563.629.228      branches                  #  660,006 M/sec                  
+        75.662.744      branch-misses             #    4,84% of all branches        
 
-       1,351639625 seconds time elapsed
+       2,369598035 seconds time elapsed
 
