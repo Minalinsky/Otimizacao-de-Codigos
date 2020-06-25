@@ -23,9 +23,6 @@ sudo perf stat -o ./results/O2_perf.txt ./fasta.gcc-2.exe 9000000 > temp
 gcc -O3 -march=core2 fasta.gcc-2.c -o fasta.gcc-2.exe
 sudo perf stat -o ./results/O3_perf.txt ./fasta.gcc-2.exe 9000000 > temp
 
-rm temp
-
-
 # Now compiling with the flags that appear more than +80% for the `fasta` program in 
 # paper `Finding  Best  Compiler Options for Critical Software Using Parallel Algorithms`
 
@@ -49,5 +46,6 @@ sudo perf stat -o ./results/ftree-ch_perf.txt ./fasta.gcc-2.exe 9000000 > temp
 gcc -fif-conversion -march=core2 fasta.gcc-2.c -o fasta.gcc-2.exe
 sudo perf stat -o ./results/fif-conversion_perf.txt ./fasta.gcc-2.exe 9000000 > temp
 
+rm temp
 
 echo "Done."
