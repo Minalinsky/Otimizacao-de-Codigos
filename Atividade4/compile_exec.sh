@@ -4,7 +4,16 @@
 #   - O2 optimation flag
 #   - O3 optimation flag
 
-# After each compilation, it executes `perf` so we can see the statistics for each compilation
+#    <Finding Best Compiler Options paper flags>
+#   - fdce flag
+#   - finline optimation flag
+#   - fpeephole2 optimation flag
+#   - ftree optimation flag
+#   - fif-conversion optimation flag
+
+# After each compilation, it executes `perf` so we can see the statistics for each compilation.
+# The perf_results for each flag are stored under `results/` folder
+
 echo "Running scripts..."
 mkdir -p results/
 # No optimization
