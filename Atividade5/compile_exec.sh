@@ -11,15 +11,15 @@ mkdir -p results/
 
 # No vectorization
 gcc -O3 matmul.c -o matmul.exe
-sudo perf stat -o ./results/noVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 500 > temp # temp is used to store program output so we dont need to wait for the prints in terminal to finish
+sudo perf stat -o ./results/noVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 900 > temp # temp is used to store program output so we dont need to wait for the prints in terminal to finish
 
 # msse3 flag (intrinsic vectorizing)
 gcc -O3 matmul.c -msse3 -o matmul.exe
-sudo perf stat -o ./results/intrinsicVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 500 > temp
+sudo perf stat -o ./results/intrinsicVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 900 > temp
 
 # ftree-vectorize (automatic compiler vectorization)
 gcc -O3 matmul.c -ftree-vectorize -o matmul.exe
-sudo perf stat -o ./results/autoVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 500 > temp
+sudo perf stat -o ./results/autoVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 900 > temp
 
 rm temp
 
