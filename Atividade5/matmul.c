@@ -4,10 +4,15 @@
 int randomInt() {
   return rand() % 200;
 }
+
+int** createMatrix(int rows, int cols) {
+  int **mat = (int **)malloc(rows * sizeof(int*));
+  for(int i = 0; i < rows; i++) mat[i] = (int *)malloc(cols * sizeof(int));
+  return mat;
+}
  
 int main(int argc, char **argv) {
   int m, n, p, q, c, d, k, sum = 0;
-  int first[10][10], second[10][10], multiply[10][10];
  
   // m, n => number of rows/columns for First matrix
   m = atoi(argv[1]);
@@ -17,6 +22,10 @@ int main(int argc, char **argv) {
   p = atoi(argv[1]);
   q = atoi(argv[1]);
  
+  int** first = createMatrix(m, n);
+  int** second = createMatrix(p, q);
+  int** multiply = createMatrix(m, q);
+
   for (c = 0; c < m; c++)
     for (d = 0; d < n; d++)
       first[c][d] = randomInt();
@@ -25,8 +34,6 @@ int main(int argc, char **argv) {
     printf("The multiplication isn't possible.\n");
   else
   {
-    printf("Enter elements of second matrix\n");
- 
     for (c = 0; c < p; c++)
       for (d = 0; d < q; d++)
         second[c][d] = randomInt();
@@ -41,8 +48,6 @@ int main(int argc, char **argv) {
         sum = 0;
       }
     }
- 
-    printf("Product of the matrices:\n");
  
     for (c = 0; c < m; c++) {
       for (d = 0; d < q; d++)
