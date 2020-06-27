@@ -49,13 +49,14 @@ int main(int argc, char **argv) {
       }
     }
  
-    for (c = 0; c < m; c++) {
-      for (d = 0; d < q; d++)
-        printf("%d\t", multiply[c][d]);
+ // Prints the resulting matrix (Uncomment)
+    // for (c = 0; c < m; c++) {
+    //   for (d = 0; d < q; d++)
+    //     printf("%d\t", multiply[c][d]);
  
-      printf("\n");
-    }
+    //   printf("\n");
+    // }
   }
- 
+  printf("Done.");
   return 0;
 }
