@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 // #include <smmintrin.h>
-#include <immintrin.h>
+// #include <immintrin.h>
+#include <x86intrin.h>
 
 int randomInt() {
   return rand() % 200;
@@ -10,11 +11,7 @@ int randomInt() {
 int** createMatrix(int rows, int cols) {
   int **mat = (int **)malloc(rows * sizeof(int*));
   for(int i = 0; i < rows; i++) {
-    int *aux = aligned_alloc(32 , sizeof(int) * cols);
-		for(int j = 0 ; j < cols ; ++j){
-			aux[j] = 0;
-		}
-    mat[i] = aux;
+    mat[i] = aligned_alloc(32 , sizeof(int) * cols);;
   }
   return mat;
 }
@@ -43,24 +40,23 @@ int main(int argc, char **argv) {
   else
   {
     for (c = 0; c < p; c++)
-      for (d = 0; d < q; d++)
+      for (d = 0; d < q; d++){
         second[c][d] = randomInt();
+      }
  
     for (c = 0; c < m; c++) {
       int *row = multiply[c];
       for (d = 0; d < q; d++) {
         int a = first[c][d];
 			  int aux[8] __attribute__((aligned(32))) = {a ,a ,a ,a ,a ,a ,a ,a };
-        __m256i vec_b = _mm256_load_si256((__m256i*)aux);
+        __m256i vector1 = _mm256_load_si256((__m256i*)aux);
 			  int size_p = p-8;
-        for (k = 0; k < size_p; k+=8) {
-          printf("insisisisi");
-          __m256i vec_a = _mm256_load_si256((__m256i*)(second[d] + k));
-          __m256i vec_c = _mm256_load_si256((__m256i*)(row + k));
-          __m256i vec_d = _mm256_mullo_epi32(vec_a,vec_b);
-          vec_d = _mm256_add_epi32(vec_d , vec_c);
-          _mm256_store_si256((__m256i*)(row + k) , vec_d);
-          // sum = sum + first[c][k]*second[k][d];
+        for (k = 0; k < size_p; k += 8) {
+          __m256i vector2 = _mm256_load_si256((__m256i*)(second[d] + k));
+          __m256i vector3 = _mm256_load_si256((__m256i*)(row + k));
+          __m256i vector4 = _mm256_mullo_epi32(vector2,vector1);
+          vector4 = _mm256_add_epi32(vector4 , vector3);
+          _mm256_store_si256((__m256i*)(row + k) , vector4);
         }
 
         for(; k < q ; k++){
@@ -69,11 +65,11 @@ int main(int argc, char **argv) {
       }
     }
  
- // Prints the resulting matrix (Uncomment)
+//  Prints the resulting matrix (Uncomment)
     // for (c = 0; c < m; c++) {
     //   for (d = 0; d < q; d++)
     //     printf("%d\t", multiply[c][d]);
- 
+
     //   printf("\n");
     // }
   }

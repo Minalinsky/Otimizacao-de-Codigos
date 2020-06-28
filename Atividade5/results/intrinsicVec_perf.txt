@@ -1,0 +1,10 @@
+# started on Sun Jun 28 03:09:14 2020
+
+
+ Performance counter stats for './matmul_intrinsics.exe 8' (300 runs):
+
+           194.026      L1-dcache-loads                                               ( +-  0,10% )
+            13.182      L1-dcache-load-misses     #    6,79% of all L1-dcache hits    ( +-  0,30% )
+
+       0,000445432 seconds time elapsed                                          ( +-  0,93% )
+
