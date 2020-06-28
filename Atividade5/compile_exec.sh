@@ -6,6 +6,8 @@
 # After each compilation, it executes `perf` (repeating the execution 10 times) so we can see the statistics for each compilation.
 # The perf_results for each flag are stored under `results/` folder
 
+# gcc -mavx2 -g -o matmul.exe matmul_intrinsics.c && ./matmul_intrinsics.exe 6
+
 echo "Running scripts..."
 mkdir -p results/
 
@@ -16,8 +18,8 @@ sudo perf stat -o ./results/noVec_perf.txt -e L1-dcache-loads,L1-dcache-load-mis
 
 echo "Running -msse3"
 # msse3 flag (intrinsic vectorizing)
-gcc -O3 matmul.c -msse3 -o matmul.exe
-sudo perf stat -o ./results/intrinsicVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul.exe 900 > temp
+gcc -O3 matmul_intrinsics.c -msse3 -o matmul_intrinsics.exe
+sudo perf stat -o ./results/intrinsicVec_perf.txt -e L1-dcache-loads,L1-dcache-load-misses --repeat=10 ./matmul_intrinsics.exe 900 > temp
 
 echo "Running -ftree-vectorize"
 # ftree-vectorize (automatic compiler vectorization)
