@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef max
+    #define max(a, b) ((a) > (b) ? (a) : (b))
+#endif
+
+#ifndef min
+    #define min(a, b) ((a) < (b) ? (a) : (b))
+#endif
+
 int BLOCK_SIZE = 256;
 
 int randomInt() {
@@ -47,16 +55,25 @@ int main(int argc, char** argv) {
       for (d = 0; d < q; d++)
         second[c][d] = randomInt();
 
-    for (x = 0; x < (MATRIX_N - BLOCK_SIZE); x += BLOCK_SIZE)
-      for (y = 0; y < (MATRIX_N - BLOCK_SIZE); y += BLOCK_SIZE)
-        for (z = 0; z < (MATRIX_N - BLOCK_SIZE); z += BLOCK_SIZE)
-          for (c = x; c < x + BLOCK_SIZE; c++)
-            for (d = y; d < y + BLOCK_SIZE; d++) {
-              for (k = z; k < z + BLOCK_SIZE; k++) {
+// J - x
+// K = y
+// i = c
+// j = d
+// k = k
+    for (x = 0; x < (MATRIX_N); x += BLOCK_SIZE)
+      for (y = 0; y < (MATRIX_N); y += BLOCK_SIZE)
+          for (c = 0; c < MATRIX_N; c++)
+            for (d = x; d < min(x + BLOCK_SIZE, MATRIX_N); d++) {
+              for (k = y; k < min(y + BLOCK_SIZE, MATRIX_N); k++) {
                 multiply[c][d] += first[c][k] * second[k][d];
               }
             }
   }
+
+  // Prints the resulting matrix (Uncomment)
+  for (c = 0; c < m; c++)
+    for (d = 0; d < q; d++)
+      printf("%d\t", multiply[c][d]);
 
   printf("Done.");
 
