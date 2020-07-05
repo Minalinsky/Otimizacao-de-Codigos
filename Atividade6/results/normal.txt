@@ -1,10 +1,10 @@
-# started on Sun Jul  5 18:56:13 2020
+# started on Sun Jul  5 18:57:19 2020
 
 
  Performance counter stats for './matmul.exe 1000' (5 runs):
 
-     3.205.501.349      L1-dcache-loads                                               ( +-  0,08% )
-     1.318.427.723      L1-dcache-load-misses     #   41,13% of all L1-dcache hits    ( +-  0,01% )
+     3.043.878.701      L1-dcache-loads                                               ( +-  0,02% )
+     1.317.712.541      L1-dcache-load-misses     #   43,29% of all L1-dcache hits    ( +-  0,02% )
 
-       6,757349984 seconds time elapsed                                          ( +-  0,56% )
+       6,473124627 seconds time elapsed                                          ( +-  0,15% )
 
