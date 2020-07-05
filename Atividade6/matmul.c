@@ -35,6 +35,11 @@ int main(int argc, char **argv) {
     printf("The multiplication isn't possible.\n");
   else
   {
+    // Initializing results matrix with zeroes
+    for (c = 0; c < m; c++)
+      for (d = 0; d < q; d++)
+        multiply[c][d] = 0;
+
     for (c = 0; c < p; c++)
       for (d = 0; d < q; d++)
         second[c][d] = randomInt();
@@ -42,22 +47,12 @@ int main(int argc, char **argv) {
     for (c = 0; c < m; c++) {
       for (d = 0; d < q; d++) {
         for (k = 0; k < p; k++) {
-          sum = sum + first[c][k]*second[k][d];
+          multiply[c][d] += first[c][k]*second[k][d];
         }
- 
-        multiply[c][d] = sum;
-        sum = 0;
       }
     }
- 
- // Prints the resulting matrix (Uncomment)
-    for (c = 0; c < m; c++) {
-      for (d = 0; d < q; d++)
-        printf("%d\t", multiply[c][d]);
- 
-      printf("\n");
-    }
   }
+ 
   printf("Done.");
   return 0;
 }

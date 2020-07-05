@@ -37,21 +37,24 @@ int main(int argc, char** argv) {
   if (n != p)
     printf("The multiplication isn't possible.\n");
   else {
+    // Initializing results matrix with zeroes
+    for (c = 0; c < m; c++)
+      for (d = 0; d < q; d++)
+        multiply[c][d] = 0;
+
     // Populating Second matrix
     for (c = 0; c < p; c++)
       for (d = 0; d < q; d++)
         second[c][d] = randomInt();
 
-    for (x = 0; x < MATRIX_N; x += BLOCK_SIZE)
-      for (y = 0; y < MATRIX_N; y += BLOCK_SIZE)
-        for (z = 0; z < MATRIX_N; z += BLOCK_SIZE)
+    for (x = 0; x < (MATRIX_N - BLOCK_SIZE); x += BLOCK_SIZE)
+      for (y = 0; y < (MATRIX_N - BLOCK_SIZE); y += BLOCK_SIZE)
+        for (z = 0; z < (MATRIX_N - BLOCK_SIZE); z += BLOCK_SIZE)
           for (c = x; c < x + BLOCK_SIZE; c++)
             for (d = y; d < y + BLOCK_SIZE; d++) {
               for (k = z; k < z + BLOCK_SIZE; k++) {
-                sum += first[c][k] * second[k][d];
+                multiply[c][d] += first[c][k] * second[k][d];
               }
-              multiply[c][d] = sum;
-              sum = 0;
             }
   }
 
